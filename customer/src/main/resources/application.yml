@@ -4,3 +4,15 @@ server:
 spring:
   application:
     name: customer
+  datasource:
+    username: 'aweperi'
+    url: jdbc:postgresql://localhost:5432/customer?createDatabaseIfNotExist=true
+    password: 'password'
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: 'true'
+        show_sql: 'true'
+    hibernate:
+      ddl-auto: update

@@ -3,7 +3,7 @@ package com.aweperi.customer;
 import org.springframework.stereotype.Service;
 
 @Service
-public record CustomerService() {
+public record CustomerService() implements ICustomerService {
     public void registerCustomer(CustomerRegistrationRequest request) {
         Customer.builder()
                 .firstName(request.firstName())
