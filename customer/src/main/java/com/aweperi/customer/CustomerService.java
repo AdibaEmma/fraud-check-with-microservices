@@ -3,9 +3,9 @@ package com.aweperi.customer;
 import org.springframework.stereotype.Service;
 
 @Service
-public record CustomerService() implements ICustomerService {
+public record CustomerService(CustomerRepository customerRepository) implements ICustomerService {
     public void registerCustomer(CustomerRegistrationRequest request) {
-        Customer.builder()
+        var customer = Customer.builder()
                 .firstName(request.firstName())
                 .lastName(request.lastName())
                 .email(request.email())
@@ -13,6 +13,6 @@ public record CustomerService() implements ICustomerService {
 
         // todo: check if email is valid
         // todo: check if email is not taken
-        // todo: store customer in db
+        customerRepository.save(customer);
     }
 }
