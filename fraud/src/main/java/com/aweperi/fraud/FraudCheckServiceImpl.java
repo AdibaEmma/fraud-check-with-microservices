@@ -13,13 +13,13 @@ public class FraudCheckServiceImpl implements FraudCheckService {
 
     @Override
     public boolean isFraudulentCustomer(Integer customerId) {
-        fraudCheckHistoryRepository.save(
+        var fraudCheckHistory = fraudCheckHistoryRepository.save(
                 FraudCheckHistory.builder()
                         .customerId(customerId)
                         .isFraudster(false)
                         .createdAt(LocalDateTime.now())
                         .build()
         );
-        return false;
+        return fraudCheckHistory.getIsFraudster();
     }
 }

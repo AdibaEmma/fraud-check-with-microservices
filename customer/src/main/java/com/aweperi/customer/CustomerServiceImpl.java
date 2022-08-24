@@ -21,7 +21,8 @@ public class CustomerServiceImpl implements CustomerService {
         // todo: check if email is not taken
         customerRepository.saveAndFlush(customer);
         // todo: check if fraudster
-        var fraudCheckResponse = restTemplate.getForObject("http://FRAUD/api/v1/fraud-check/{customerId}",
+        var fraudCheckResponse = restTemplate.getForObject(
+                "http://FRAUD/api/v1/fraud-check/{customerId}",
                 FraudCheckResponse.class, customer.getId());
         assert fraudCheckResponse != null;
         if (fraudCheckResponse.isFraudster()) throw new IllegalStateException("fraudster");
