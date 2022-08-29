@@ -1,4 +1,8 @@
 package com.aweperi.clients.notification;
 
-public class NotificationRequest {
+public record NotificationRequest(
+        Long toCustomerId,
+        String toCustomerEmail,
+        String message
+) {
 }

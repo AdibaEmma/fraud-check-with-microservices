@@ -1,4 +1,4 @@
-package com.aweperi.customer;
+package com.aweperi.notification;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,19 +8,22 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.time.LocalDateTime;
 
 import static javax.persistence.GenerationType.AUTO;
 
-@Data
-@Builder
 @Entity
-@AllArgsConstructor
+@Data
 @NoArgsConstructor
-public class Customer {
+@AllArgsConstructor
+@Builder
+public class Notification {
     @Id
     @GeneratedValue(strategy = AUTO)
-    private Long id;
-    private String firstName;
-    private String lastName;
-    private String email;
+    private Long notificationId;
+    private Long toCustomerId;
+    private String toCustomerEmail;
+    private String sender;
+    private String message;
+    private LocalDateTime sentAt;
 }
